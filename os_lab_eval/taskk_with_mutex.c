@@ -1,8 +1,8 @@
  #include <stdio.h>
  #include <pthread.h>
  int counter = 0;
- pthread_mutex_t mutexxx;  //mutex is needed so that one thread accesses this
- // critical section at a time and the synchronization can be mantained.
+ pthread_mutex_t mutexxx;  //mutex is needed so that one thread accesses this 
+ //critical section at a time and the synchronization can be mantained.
  void* incrementtt(void* arg) {
     pthread_mutex_lock(&mutexxx);
     for (int i = 0; i < 100000; i++) {

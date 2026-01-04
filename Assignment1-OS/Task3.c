@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <pthread.h>
 
-
 void* compute(void* arg) {
     int num = *(int*)arg;  
     printf("Thread:Number = %d\n",num);
@@ -12,11 +11,9 @@ void* compute(void* arg) {
 int main() {
     pthread_t thread;
     int number;
-    printf("Enter an integer: ");
     scanf("%d", &number);
     pthread_create(&thread, NULL, compute, &number);
     pthread_join(thread, NULL);
     printf("Main thread: Work completed.\n");
-
     return 0;
 }

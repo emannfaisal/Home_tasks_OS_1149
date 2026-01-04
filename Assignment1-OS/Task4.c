@@ -10,22 +10,22 @@ void* compute_factorial(void* arg) {
     for (int i= 1;i<= n; i++) {
         *result *= i;
     }
-    return result;
+    return (void*)result;
 }
 
 int main() {
     pthread_t thread;
     int num;
-    long long* factorial_result;
+    void* factorial_result;
 
     printf("Enter integer: ");
     scanf("%d", &num);
 
     pthread_create(&thread, NULL,compute_factorial, &num);
 
-    pthread_join(thread, (void**)&factorial_result);
+    pthread_join(thread,&factorial_result);
 
-    printf("Factorial of %d = %lld\n",num, *factorial_result);
+    printf("Factorial of %d = %d\n",num, *(int*)factorial_result);
     free(factorial_result);
 
     printf("Main thread: Work completed.\n");

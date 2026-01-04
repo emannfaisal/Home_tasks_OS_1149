@@ -7,7 +7,6 @@
 void* worker_thread(void* arg) {
     int thread_num = *(int*)arg;
     pthread_t tid = pthread_self(); 
-
     int sleep_time = rand() % 3 + 1;
 
     printf("Thread %d (ID: %lu): Starting work... Sleeping for %d seconds\n",
